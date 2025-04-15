@@ -26,7 +26,8 @@ const getAllUsers = async (req, res) => {
     const createUser = async (req, res) => {
         try {
             const { name, email, password } = req.body;
-            const newUser = await UserModel.createUser(name, email, password);
+            const photo = req.file ? req.file.filename : null;
+            const newUser = await UserModel.createUser(name, email, password, photo);
             res.status(201).json(newUser);
         } catch (error) {
             res.status(404).json({ message: "Erro ao criar usuário", error });

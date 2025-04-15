@@ -16,10 +16,10 @@ const updatePost = async (id, name, email, password) => {
     return result.rows[0];
 };
 
-const createUser = async (name, email, password) => {
+const createUser = async (name, email, password, photo) => {
     const result = await pool.query(
         "INSERT INTO usuarios (name, email, password) VALUES ($1, $2, $3) RETURNING *",
-        [name, email, password]
+        [name, email, password, photo]
     );
     return result.rows[0];
 };
