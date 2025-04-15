@@ -11,13 +11,13 @@ const options = {
             description: 'Documentação da API para gerenciamento de usuários',
         },
     },
-    apis: ['./routes/*.js'], // <- Caminho das suas rotas
+    apis: ['./src/routes/*.js'], // <- Caminho das suas rotas
 };
 
 const swaggerSpec = swaggerJsdoc(options);
 
 const setupSwagger = (app) => {
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+    app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 };
 
 module.exports = setupSwagger;

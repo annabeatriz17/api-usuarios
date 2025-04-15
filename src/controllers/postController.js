@@ -1,4 +1,4 @@
-const PostModel = require("../models/postModel");
+const PostModel = require("../model/postModel");
 
 const getAllPosts = async (req, res) => {
     try {
@@ -33,7 +33,7 @@ const createPost = async (req, res) => {
         
     }
 }
-const editPost = async (req, res) => {
+const updatePost = async (req, res) => {
     try {
         const { title, content } = req.body;
         const post = await PostModel.editPost(req.params.id, title, content);
@@ -57,4 +57,4 @@ const deletePost = async (req, res) => {
     }
 }
 
-module.exports = { getAllPosts, getById, createPost, editPost, deletePost };
+module.exports = { getAllPosts, getByIdPost, createPost, updatePost, deletePost };

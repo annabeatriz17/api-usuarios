@@ -5,9 +5,9 @@ const router = express.Router();
 const postController = require("../controllers/postController");
 
 router.get("/", postController.getAllPosts);
-router.get("/:id", postController.getById);
+router.get("/:id", postController.getByIdPost);
 router.post("/", postController.createPost);
-router.put("/:id", postController.editPost);
+router.put("/:id", postController. updatePost);
 router.delete("/:id", postController.deletePost);
 
 module.exports = router;

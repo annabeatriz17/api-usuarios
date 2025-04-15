@@ -10,10 +10,12 @@ const getUserById = async (id) => {
     return result.rows[0];
 };
 
-const updatePost = async (id, name, email, password) => {
-    const { name, email, password } = data;
-    const result = await pool.query("UPDATE usuarios SET name = $1, email = $2, password = $3 WHERE id = $4 RETURNING *", [name, email, password, id]);
-    return result.rows[0];
+const updateUser = async (id, name, email, password) => {
+    const result = await pool.query(
+        "UPDATE usuarios SET name = $1, email = $2, password = $3 WHERE id = $4",
+        [name, email, password, id]
+    );
+    return result.rows;
 };
 
 const createUser = async (name, email, password, photo) => {
