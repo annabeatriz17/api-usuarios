@@ -4,7 +4,7 @@ const cors = require("cors");
 const userRoutes = require("./src/routes/userRoutes");
 const postRoutes = require("./src/routes/postRoutes");
 const reportRoutes = require("./src/routes/reportRoutes");
-const setupSwagger = require("./src/config/swagger");
+const setupSwagger = require("./src/config/swagger"); // Swagger aqui
 const path = require("path");
 
 
