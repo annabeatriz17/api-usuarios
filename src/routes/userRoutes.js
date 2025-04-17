@@ -72,7 +72,7 @@ router.get('users/:id', UserController.getUserById);
  *       201:
  *         description: Usuário criado
 */
-router.post('/users', UserController.createUser);
+router.post('/users', upload.single("photo"), UserController.createUser);
 
 /**
  * @swagger
