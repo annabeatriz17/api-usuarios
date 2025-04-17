@@ -13,11 +13,10 @@ app.use(express.json());
 setupSwagger(app);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes); // /api/users
 app.use("/api/post", postRoutes);
-app.use("/api", reportRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
 app.listen(PORT, () => {
     console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
 });

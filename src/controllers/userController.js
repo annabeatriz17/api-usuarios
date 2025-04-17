@@ -36,11 +36,12 @@ const getAllUsers = async (req, res) => {
 
     const updateUser = async (req, res) => {
         try {
-            const user = await UserModel.updateUser(req.params.id, req.body);
-            if (!user) {
+            const { name, email, password } = req.body;
+            const user = await UserModel.updateUser(req.params.id, name, email, password);
+            if (!updateUser) {
                 return res.status(404).json({ message: "Usuário não encontrado", error });
             }
-            res.status(user);
+            res.status(updateUser);
         } catch (error) {
             res.status(404).json({ message: "Erro ao atualizar usuário", error });
         }
@@ -48,14 +49,12 @@ const getAllUsers = async (req, res) => {
     
     const deleteUser = async (req, res) => {
         try {
-            const user = await UserModel.deleteUser(req.params.id);
-            if (result.error) {
-                return res.status(404).json(result);
-            }
-            res.json(result);
+            const message = await UserModel.deleteUser(req.params.id);
+            res.status(200).json(message);
         } catch (error) {
-            res.status(404).json({ message: "Erro ao deletar usuário", error });
+            res.status(500).json({ message: "Erro ao deletar usuário", error });
         }
     };
+    
 
 module.exports = { getAllUsers, getUserById, createUser, updateUser, deleteUser };

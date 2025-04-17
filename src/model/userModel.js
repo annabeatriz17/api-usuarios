@@ -13,14 +13,17 @@ const getUserById = async (id) => {
 const updateUser = async (id, name, email, password) => {
     const result = await pool.query(
         "UPDATE usuarios SET name = $1, email = $2, password = $3 WHERE id = $4",
-        [name, email, password, id]
-    );
-    return result.rows;
+        [name, email, password , id]
+    )
+    if (result.rowCount === 0) {
+        return { error: "Usuário não encontrado" };
+    }
+    return result.rows[0];
 };
 
 const createUser = async (name, email, password, photo) => {
     const result = await pool.query(
-        "INSERT INTO usuarios (name, email, password) VALUES ($1, $2, $3) RETURNING *",
+        "INSERT INTO usuarios (name, email, password, photo) VALUES ($1, $2, $3) RETURNING *",
         [name, email, password, photo]
     );
     return result.rows[0];
