@@ -18,7 +18,6 @@ CREATE TABLE post (
 );
 
 INSERT INTO users (name, email, password) VALUES 
-INSERT INTO users (name, email, password) VALUES
 ('Beatriz Lima', 'bealima@gmail.com', 'ds564'),
 ('Luana', 'luana@gmail.com', 'ds564'),
 ('Parma', 'parma@gmail.com', 'ds564'),
